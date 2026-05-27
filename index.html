@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vornicu Iulian — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+/* ── Reset & Variables ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0f1115;
+  --surface:    #16191f;
+  --border:     #2a2e37;
+  --accent:     #3b82f6; 
+  --accent-soft: rgba(59, 130, 246, 0.1);
+  --txt:        #e2e8f0;
+  --txt-dim:    #94a3b8;
+  --txt-muted:  #475569;
+  --mono:       'JetBrains Mono', monospace;
+  --sans:       'Inter', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Navigation ────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 10%;
+  height: 64px;
+  background: rgba(15, 17, 21, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.8rem;
+  color: var(--txt-dim);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--txt); }
+
+/* ── Layout ────────────────────────────────────────── */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 120px 2rem 6rem;
+}
+
+section { margin-bottom: 5rem; }
+
+/* ── Hero ───────────────────────────────────────────── */
+#hero {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-role {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.hero-summary {
+  font-size: 1.05rem;
+  color: var(--txt-dim);
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.hero-contacts {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+}
+
+.contact-link {
+  color: var(--txt-dim);
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s;
+}
+.contact-link:hover { color: var(--accent); }
+
+/* ── Global Item Styles ───────────────────────────── */
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--txt-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.section-label::after { content: ''; height: 1px; flex: 1; background: var(--border); }
+
+.item-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  margin-bottom: 3rem;
+}
+
+.item-meta {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--txt-muted);
+}
+
+.item-title { font-weight: 600; font-size: 1.15rem; color: #fff; }
+.item-org { color: var(--accent); font-size: 0.95rem; margin-bottom: 0.8rem; font-weight: 500; }
+.item-desc { color: var(--txt-dim); font-size: 0.95rem; text-align: justify; }
+
+.item-desc ul {
+  list-style: none; margin-top: 0.8rem;
+}
+.item-desc li {
+  position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; line-height: 1.5;
+}
+.item-desc li::before {
+  content: "→"; position: absolute; left: 0; color: var(--accent);
+}
+
+/* ── Skills Grid ────────────────────────────────────── */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+
+.skill-cat h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  color: var(--txt-dim);
+}
+.tag.featured { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+/* ── Awards Section ─────────────────────────────────── */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.award-card {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.award-name { color: var(--accent); font-weight: 600; margin-bottom: 0.2rem; display: block; }
+.award-date { font-family: var(--mono); font-size: 0.75rem; color: var(--txt-muted); display: block; margin-bottom: 0.8rem; }
+.award-info { font-size: 0.85rem; color: var(--txt-dim); }
+
+/* ── Footer ─────────────────────────────────────────── */
+footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--txt-muted);
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .item-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  main { padding-top: 100px; }
+  .awards-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">comicsavi</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</nav>
+
+<main>
+  <section id="hero">
+    <span class="hero-role">Software Developer</span>
+    <h1 class="hero-title">Vornicu Iulian</h1>
+    <p class="hero-summary">
+      Over 3 years of experience in <strong>firmware development</strong>, <strong>real-time systems</strong>, and <strong>automation tooling</strong>. Expert at bridging the gap between low-level hardware control and high-level software ecosystems. Currently pursuing an M.Sc. in <strong>Machine Learning, Robotics, and Control</strong>.
+    </p>
+    <div class="hero-contacts">
+      <a href="mailto:iulianz841@gmail.com" class="contact-link"><i class="fa fa-envelope"></i> iulianz841@gmail.com</a>
+      <a href="tel:+40790335009" class="contact-link"><i class="fa fa-phone"></i> +40 790 335 009</a>
+      <a href="https://linkedin.com/in/iulian-vornicu-20a200288/" class="contact-link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/comicsavi" class="contact-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <span class="contact-link"><i class="fa fa-map-marker-alt"></i> Iași, România</span>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-label">Professional Experience</div>
+    
+    <div class="item-row">
+      <div class="item-meta">Dec 2024 — Present</div>
+      <div class="item-content">
+        <h3 class="item-title">Software Developer</h3>
+        <div class="item-org">Aumovio Autonomous Mobility</div>
+        <div class="item-desc">
+          <ul>
+            <li>Developed a <strong>TypeScript-based VS Code extension</strong> acting as a scripting layer for a proprietary internal language used in controlling dedicated hardware boards.</li>
+            <li>Engineered <strong>production-grade C#/.NET applications</strong> for hardware control, system integration, and <strong>RESTBUS simulation</strong> for CAN and ETH buses.</li>
+            <li>Implemented robust <strong>CI/CD pipelines</strong> using GitHub Actions and managed structured Git/GitHub workflows with code reviews.</li>
+            <li>Designed <strong>REST APIs</strong> integrating Microsoft Graph and SharePoint for enterprise-level automation.</li>
+            <li>Maintained <strong>SQL databases</strong> for test history, automating data extraction, analysis, and validation reporting.</li>
+            <li>Created JavaScript and Python automation tools to reduce manual engineering effort and facilitate rapid debugging.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-meta">July 2022 — Dec 2024</div>
+      <div class="item-content">
+        <h3 class="item-title">Software Developer</h3>
+        <div class="item-org">Continental Automotive</div>
+        <div class="item-desc">
+          <ul>
+            <li>Engineered <strong>embedded firmware</strong> in C for <strong>STM32</strong> microcontrollers using both bare-metal and <strong>FreeRTOS</strong> architectures.</li>
+            <li>Designed custom <strong>communication protocols</strong> over CAN, RS485, and USB.</li>
+            <li>Built <strong>C# and Python diagnostic tools</strong> for real-time device control and embedded system testing.</li>
+            <li>Implemented a <strong>real-time alert system</strong> using SQL and data processing pipelines to monitor test data and trigger custom notifications.</li>
+            <li>Developed synchronization and inter-board communication logic for <strong>distributed embedded systems</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-label">Technical Stack</div>
+    <div class="skills-container">
+      <div class="skill-cat">
+        <h4>Embedded Systems</h4>
+        <div class="tag-cloud">
+          <span class="tag featured">STM32</span>
+          <span class="tag featured">FreeRTOS</span>
+          <span class="tag">Embedded C/C++</span>
+          <span class="tag">Bare-metal</span>
+          <span class="tag">CAN / RS485 / USB</span>
+          <span class="tag">Sensor Fusion</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Software Engineering</h4>
+        <div class="tag-cloud">
+          <span class="tag featured">C# / .NET</span>
+          <span class="tag featured">Python</span>
+          <span class="tag">TypeScript / JS</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">SQL / MySQL</span>
+          <span class="tag">CI/CD (GitHub Actions)</span>
+        </div>
+      </div>
+      <div class="skill-cat">
+        <h4>Robotics & Control</h4>
+        <div class="tag-cloud">
+          <span class="tag featured">ROS (Robot Operating System)</span>
+          <span class="tag">Distributed Systems</span>
+          <span class="tag">Control Systems</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Data Processing</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="section-label">Research & Theses</div>
+    
+    <div class="item-row">
+      <div class="item-meta">Bachelor's Thesis</div>
+      <div class="item-content">
+        <h3 class="item-title">RRT-Divided: Autonomous Mobile Robot Path Planning</h3>
+        <div class="item-desc">
+          Developed a novel spatial-partitioning RRT variant for LiDAR-based navigation. 
+          <ul>
+            <li>Implemented <strong>RRT-Divided</strong>: A quadrant-based sampling algorithm that selects lowest-cost candidates across N subspaces.</li>
+            <li>Engineered a <strong>repulsion mechanism</strong> and random-node restart strategy to escape local minima in narrow corridors.</li>
+            <li>Deployed on <strong>Wheeltec S300 using ROS</strong> in a distributed architecture, optimizing obstacle avoidance and real-time decision-making.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-meta">Master's Thesis</div>
+      <div class="item-content">
+        <h3 class="item-title">Algorithmic Trading & Microservices</h3>
+        <div class="item-desc">
+          Designed a distributed execution engine for automated strategy execution and real-time portfolio management.
+          <ul>
+            <li>Orchestrated a <strong>modular microservices architecture</strong> using Docker and Redis.</li>
+            <li>Built an <strong>event-driven backtesting</strong> engine and a Telegram-based command interface for remote bot management.</li>
+            <li>Implemented <strong>risk governance</strong>, position sizing, and strategy abstractions (Momentum, Threshold strategies).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="section-label">Awards & Certifications</div>
+    <div class="awards-grid">
+      <div class="award-card">
+        <span class="award-name">National Scientific Session — 1st Prize</span>
+        <span class="award-date">May 2024</span>
+        <p class="award-info">Awarded for the best Bachelor's thesis in Robotics & Autonomous Systems.</p>
+      </div>
+      <div class="award-card">
+        <span class="award-name">Prove IT Competition — 1st Prize</span>
+        <span class="award-date">2024</span>
+        <p class="award-info">Progressed from 3rd (2022) to 1st place in embedded control and state-machine design for EV applications.</p>
+      </div>
+      <div class="award-card">
+        <span class="award-name">EBEC Competition</span>
+        <span class="award-date">2021 (1st), 2023/24 (2nd)</span>
+        <p class="award-info">Engineering case study competition focused on rapid system design and technical problem solving.</p>
+      </div>
+      <div class="award-card">
+        <span class="award-name">AWS AI Practitioner Lab</span>
+        <span class="award-date">Amazon Web Services</span>
+        <p class="award-info">Hands-on experience with AWS AI/ML services, model deployment, and responsible AI practices.</p>
+      </div>
+      <div class="award-card">
+        <span class="award-name">NXP Cup — Autonomous Vehicles</span>
+        <span class="award-date">Academic Competition</span>
+        <p class="award-info">Developed real-time perception and PID control algorithms for autonomous racing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-label">Education</div>
+    <div class="item-row">
+      <div class="item-meta">2024 — 2026</div>
+      <div class="item-content">
+        <h3 class="item-title">M.Sc. Machine Learning, Robotics and Control</h3>
+        <div class="item-org">TU Gheorghe Asachi, Iași</div>
+      </div>
+    </div>
+    <div class="item-row">
+      <div class="item-meta">2020 — 2024</div>
+      <div class="item-content">
+        <h3 class="item-title">B.Eng. Automatic Control and Computer Engineering</h3>
+        <div class="item-org">TU Gheorghe Asachi, Iași</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Vornicu Iulian &copy; <span id="year"></span> — Built with purpose.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
