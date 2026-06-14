@@ -99,6 +99,18 @@ section { margin-bottom: 5rem; }
   margin-bottom: 2rem;
 }
 
+.hero-summary a, .item-org a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.hero-summary a:hover, .item-org a:hover {
+  color: #fff;
+}
+
 .hero-contacts {
   display: flex; flex-wrap: wrap; gap: 1.5rem;
 }
@@ -167,6 +179,7 @@ section { margin-bottom: 5rem; }
 
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .tag {
+  display: inline-block;
   background: var(--surface);
   border: 1px solid var(--border);
   padding: 5px 12px;
@@ -174,8 +187,10 @@ section { margin-bottom: 5rem; }
   font-size: 0.75rem;
   font-family: var(--mono);
   color: var(--txt-dim);
+  text-decoration: none;
 }
 .tag.featured { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+a.tag:hover { background: var(--accent-soft); color: #fff; }
 
 /* ── Awards Section ─────────────────────────────────── */
 .awards-grid {
@@ -230,7 +245,7 @@ footer {
     <span class="hero-role">Software Developer</span>
     <h1 class="hero-title">Vornicu Iulian</h1>
     <p class="hero-summary">
-      Over 3 years of experience in <strong>firmware development</strong>, <strong>real-time systems</strong>, and <strong>automation tooling</strong>. Expert at bridging the gap between low-level hardware control and high-level software ecosystems. Currently pursuing an M.Sc. in <strong>Machine Learning, Robotics, and Control</strong>.
+      Over 3 years of experience in <strong>firmware development</strong>, <strong>real-time systems</strong>, and <strong>automation tooling</strong>. Expert at bridging the gap between low-level hardware control and high-level software ecosystems. Currently pursuing an M.Sc. in <a href="https://github.com/comicsavi/constrained_kernel_segmentation" target="_blank"><strong>Machine Learning</strong></a>, <a href="https://github.com/comicsavi/robot_aqpv" target="_blank"><strong>Robotics</strong></a>, and <strong>Control</strong>.
     </p>
     <div class="hero-contacts">
       <a href="mailto:iulianz841@gmail.com" class="contact-link"><i class="fa fa-envelope"></i> iulianz841@gmail.com</a>
@@ -297,6 +312,7 @@ footer {
       <div class="skill-cat">
         <h4>Software Engineering</h4>
         <div class="tag-cloud">
+          <a href="https://github.com/comicsavi/LUMOS_game" target="_blank" class="tag featured"><i class="fab fa-java"></i> Java</a>
           <span class="tag featured">C# / .NET</span>
           <span class="tag featured">Python</span>
           <span class="tag">TypeScript / JS</span>
@@ -387,9 +403,9 @@ footer {
   <section id="education">
     <div class="section-label">Education</div>
     <div class="item-row">
-      <div class="item-meta">2024 — 2026</div>
+      <div class="item-meta">2024 — Present</div>
       <div class="item-content">
-        <h3 class="item-title">M.Sc. Machine Learning, Robotics and Control</h3>
+        <h3 class="item-title">M.Sc. <a href="https://github.com/comicsavi/constrained_kernel_segmentation" target="_blank">Machine Learning</a>, <a href="https://github.com/comicsavi/robot_aqpv" target="_blank">Robotics</a> and Control</h3>
         <div class="item-org">TU Gheorghe Asachi, Iași</div>
       </div>
     </div>
